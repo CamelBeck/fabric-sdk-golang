@@ -1,0 +1,27 @@
+
+security:
+    hashAlgorithm: SHA3
+    level: 256
+    confidentialityProtocolVersion: 1.2
+    privacy: true
+
+chaincode:
+    golang:
+        # for deploy
+        Dockerfile:  |
+            from hyperledger/fabric-ccenv
+            COPY src $GOPATH/src
+            WORKDIR $GOPATH
+
+# clients only can call gateway[filter], not allow connect to fabric directly. 
+proxy:
+    tls:
+        # wether gateway is on tls
+        enable: true
+        # root cert of gateway
+        ca: D:/tmp/chain.crt
+        # if gateway is under mutual authentication, client should apply certs
+        verifyClientCert: true
+        crt: /tmp/client.crt
+        priv: /tmp/client.priv
+    address: host.com:8090
