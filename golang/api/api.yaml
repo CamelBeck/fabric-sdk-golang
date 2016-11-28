@@ -19,7 +19,7 @@ proxy:
         # wether gateway is on tls
         enable: true
         # root cert of gateway
-        ca: D:/tmp/chain.crt
+        ca: /tmp/chain.crt
         # if gateway is under mutual authentication, client should apply certs
         verifyClientCert: true
         crt: /tmp/client.crt
